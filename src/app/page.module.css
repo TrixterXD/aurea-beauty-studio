@@ -1,0 +1,10 @@
+.main {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 24px;
+}
+
+.title {
+  font-size: clamp(4rem, 12vw, 8rem);
+}
