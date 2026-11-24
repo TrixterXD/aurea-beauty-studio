@@ -4,20 +4,19 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <div className={styles.top}>
-          <div>
-            <p className={styles.logo}>AUREA</p>
-            <p className={styles.tagline}>Beauty in balance.</p>
-          </div>
-          <nav className={styles.navigation} aria-label="Footer navigation">
-            <a href="#philosophy">Philosophy</a>
-            <a href="#treatments">Treatments</a>
-            <a href="#contact">Contact</a>
-          </nav>
+        <div className={styles.brand}>
+          <p className={styles.logo}>AURÉ</p>
+          <p className={styles.copyright}>© 2026 AURÉ</p>
         </div>
-        <div className={styles.bottom}>
-          <p>© 2026 AUREA</p>
-          <p>Concept Project by Ivacov Flow</p>
+        <p className={styles.tagline}>Timeless Beauty</p>
+        <nav className={styles.navigation} aria-label="Footer navigation">
+          <a href="#philosophy">Philosophy</a>
+          <a href="#treatments">Treatments</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div className={styles.credit}>
+          <p className={styles.creditLabel}>Concept Project by</p>
+          <p className={styles.studio}>IVACOV FLOW</p>
         </div>
       </div>
     </footer>
