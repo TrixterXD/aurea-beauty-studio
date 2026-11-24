@@ -16,9 +16,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "AUREA — Beauty Studio",
+  title: "AURÉ — Beauty Studio",
   description:
-    "AUREA — демонстрационный сайт премиальной Beauty Studio для портфолио Ivacov Flow.",
+    "AURÉ — демонстрационный сайт премиальной Beauty Studio для портфолио Ivacov Flow.",
 };
 
 export default function RootLayout({

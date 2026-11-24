@@ -24,7 +24,7 @@ export default function Philosophy() {
             The art of natural beauty.
           </h2>
           <p className={styles.description}>
-            At AUREA, we believe true beauty begins with balance. Every treatment
+            At AURÉ, we believe true beauty begins with balance. Every treatment
             is designed to nurture your skin, restore your confidence, and
             celebrate your natural individuality.
           </p>
