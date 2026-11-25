@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aurea-beauty-studio-gamma.vercel.app/sitemap.xml
