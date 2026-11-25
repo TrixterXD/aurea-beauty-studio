@@ -19,20 +19,14 @@ const siteUrl = new URL("https://aurea-beauty-studio-gamma.vercel.app/");
 const title = "AURÉ — Beauty Studio";
 const description =
   "Discover AURÉ, a concept beauty studio celebrating timeless elegance, thoughtful treatments, and beauty in balance.";
-const image = {
-  url: "/images/og-image.jpg",
-  width: 1200,
-  height: 630,
-  alt: "AURÉ Beauty Studio — Beauty in balance.",
-};
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title,
   description,
   alternates: { canonical: siteUrl },
-  openGraph: { type: "website", url: siteUrl, title, description, images: [image] },
-  twitter: { card: "summary_large_image", title, description, images: [image] },
+  openGraph: { type: "website", url: siteUrl, title, description },
+  twitter: { card: "summary_large_image", title, description },
   icons: { icon: { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" } },
 };
 
