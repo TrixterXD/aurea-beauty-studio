@@ -18,6 +18,7 @@ const manrope = Manrope({
 });
 
 const siteUrl = new URL("https://aurea-beauty-studio-gamma.vercel.app/");
+const ogLocales = { en: "en_US", ru: "ru_RU", ro: "ro_RO" };
 
 export function siteMetadata(locale: Locale, { title, description, imageAlt }: Dictionary["seo"]): Metadata {
   const url = locales[locale].path;
@@ -27,11 +28,12 @@ export function siteMetadata(locale: Locale, { title, description, imageAlt }: D
     metadataBase: siteUrl,
     title,
     description,
+    robots: { index: false, follow: true },
     alternates: {
       canonical: url,
-      languages: { en: locales.en.path, ru: locales.ru.path, ro: locales.ro.path, "x-default": locales.en.path },
+      languages: { en: locales.en.path, ru: locales.ru.path, ro: locales.ro.path, "x-default": locales.ro.path },
     },
-    openGraph: { type: "website", url, title, description, images },
+    openGraph: { type: "website", locale: ogLocales[locale], url, title, description, images },
     twitter: { card: "summary_large_image", title, description, images },
     icons: { icon: { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" } },
   };
