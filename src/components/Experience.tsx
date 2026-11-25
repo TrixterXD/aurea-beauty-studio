@@ -1,9 +1,10 @@
 "use client";
 
 import { useRef, useState, type MouseEvent } from "react";
+import type { Dictionary } from "../i18n/en";
 import styles from "./Experience.module.css";
 
-export default function Experience() {
+export default function Experience({ copy }: { copy: Dictionary["experience"] }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -28,9 +29,9 @@ export default function Experience() {
     <section className={styles.experience} aria-labelledby="experience-title">
       <div className={styles.inner}>
         <div className={styles.heading}>
-          <p className={styles.eyebrow}>THE AURÉ EXPERIENCE</p>
+          <p className={styles.eyebrow}>{copy.eyebrow}</p>
           <h2 id="experience-title" className={styles.title}>
-            A moment to reconnect.
+            {copy.title}
           </h2>
         </div>
         <div className={styles.media}>
@@ -43,16 +44,16 @@ export default function Experience() {
               playsInline
               controls={started}
               tabIndex={started ? 0 : -1}
-              aria-label="The AURÉ experience film"
+              aria-label={copy.videoLabel}
               onError={() => setFailed(true)}
             >
-              Your browser does not support video playback.
+              {copy.videoFallback}
             </video>
             {!started && (
               <button
                 className={styles.play}
                 type="button"
-                aria-label="Play the AURÉ experience film with sound"
+                aria-label={copy.playLabel}
                 onClick={play}
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,12 +63,10 @@ export default function Experience() {
             )}
           </div>
           <p className={styles.error} role="status">
-            {failed && "The film couldn’t be played. Please try again or reload the page."}
+            {failed && copy.error}
           </p>
         </div>
-        <p className={styles.description}>
-          Discover the quiet beauty of slowing down. A ritual created just for you.
-        </p>
+        <p className={styles.description}>{copy.description}</p>
       </div>
     </section>
   );

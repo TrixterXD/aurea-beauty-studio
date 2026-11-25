@@ -1,7 +1,8 @@
 import Image from "next/image";
+import type { Dictionary } from "../i18n/en";
 import styles from "./Philosophy.module.css";
 
-export default function Philosophy() {
+export default function Philosophy({ copy }: { copy: Dictionary["philosophy"] }) {
   return (
     <section
       id="philosophy"
@@ -12,22 +13,18 @@ export default function Philosophy() {
         <div className={styles.image}>
           <Image
             src="/images/philosophy.webp"
-            alt="A sunlit studio interior with arched doorways, flowers and a treatment chair."
+            alt={copy.imageAlt}
             fill
             sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1000px) calc((100vw - 96px) / 2), (max-width: 1280px) calc((100vw - 160px) / 2), 560px"
             unoptimized
           />
         </div>
         <div className={styles.content}>
-          <p className={styles.eyebrow}>OUR PHILOSOPHY</p>
+          <p className={styles.eyebrow}>{copy.eyebrow}</p>
           <h2 id="philosophy-title" className={styles.title}>
-            The art of natural beauty.
+            {copy.title}
           </h2>
-          <p className={styles.description}>
-            At AURÉ, we believe true beauty begins with balance. Every treatment
-            is designed to nurture your skin, restore your confidence, and
-            celebrate your natural individuality.
-          </p>
+          <p className={styles.description}>{copy.description}</p>
         </div>
       </div>
     </section>
