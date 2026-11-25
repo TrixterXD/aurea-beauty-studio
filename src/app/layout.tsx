@@ -15,10 +15,25 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const siteUrl = new URL("https://aurea-beauty-studio-gamma.vercel.app/");
+const title = "AURÉ — Beauty Studio";
+const description =
+  "Discover AURÉ, a concept beauty studio celebrating timeless elegance, thoughtful treatments, and beauty in balance.";
+const image = {
+  url: "/images/og-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "AURÉ Beauty Studio — Beauty in balance.",
+};
+
 export const metadata: Metadata = {
-  title: "AURÉ — Beauty Studio",
-  description:
-    "AURÉ — демонстрационный сайт премиальной Beauty Studio для портфолио Ivacov Flow.",
+  metadataBase: siteUrl,
+  title,
+  description,
+  alternates: { canonical: siteUrl },
+  openGraph: { type: "website", url: siteUrl, title, description, images: [image] },
+  twitter: { card: "summary_large_image", title, description, images: [image] },
+  icons: { icon: { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" } },
 };
 
 export default function RootLayout({
