@@ -1,29 +1,10 @@
 import Image from "next/image";
+import type { Dictionary } from "../i18n/en";
 import styles from "./Treatments.module.css";
 
-const treatments = [
-  {
-    title: "Facial Rituals",
-    description: "Personalized treatments to nourish and revitalize your skin.",
-    image: "/images/facial-rituals.webp",
-    alt: "A nourishing facial mask being applied during a treatment.",
-  },
-  {
-    title: "Skin Renewal",
-    description: "Gentle care designed to restore your natural radiance.",
-    image: "/images/skin-renewal.webp",
-    alt: "A dropper dispensing serum into a skincare bottle.",
-  },
-  {
-    title: "Sculpting Massage",
-    description:
-      "Relaxing techniques to release tension and enhance your natural glow.",
-    image: "/images/sculpting-massage.webp",
-    alt: "A relaxing facial massage with gentle sculpting techniques.",
-  },
-];
+const treatments = ["facial-rituals", "skin-renewal", "sculpting-massage"] as const;
 
-export default function Treatments() {
+export default function Treatments({ copy }: { copy: Dictionary["treatments"] }) {
   return (
     <section
       id="treatments"
@@ -31,35 +12,38 @@ export default function Treatments() {
       aria-labelledby="treatments-title"
     >
       <div className={styles.inner}>
-        <p className={styles.eyebrow}>OUR TREATMENTS</p>
+        <p className={styles.eyebrow}>{copy.eyebrow}</p>
         <h2 id="treatments-title" className={styles.title}>
-          Curated for you.
+          {copy.title}
         </h2>
         <div className={styles.grid}>
-          {treatments.map((treatment) => (
-            <article className={styles.card} key={treatment.title}>
-              <div className={styles.image}>
-                <Image
-                  src={treatment.image}
-                  alt={treatment.alt}
-                  fill
-                  sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1000px) calc((100vw - 112px) / 3), (max-width: 1280px) calc((100vw - 144px) / 3), 379px"
-                  unoptimized
-                />
-              </div>
-              <div className={styles.content}>
-                <h3 className={styles.cardTitle}>{treatment.title}</h3>
-                <p className={styles.description}>{treatment.description}</p>
-                <a
-                  className={styles.link}
-                  href="#contact"
-                  aria-label={`Book treatment: ${treatment.title}`}
-                >
-                  BOOK TREATMENT <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </article>
-          ))}
+          {treatments.map((id) => {
+            const treatment = copy.cards[id];
+            return (
+              <article className={styles.card} key={id}>
+                <div className={styles.image}>
+                  <Image
+                    src={`/images/${id}.webp`}
+                    alt={treatment.alt}
+                    fill
+                    sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1000px) calc((100vw - 112px) / 3), (max-width: 1280px) calc((100vw - 144px) / 3), 379px"
+                    unoptimized
+                  />
+                </div>
+                <div className={styles.content}>
+                  <h3 className={styles.cardTitle}>{treatment.title}</h3>
+                  <p className={styles.description}>{treatment.description}</p>
+                  <a
+                    className={styles.link}
+                    href="#contact"
+                    aria-label={`${copy.ctaLabel}: ${treatment.title}`}
+                  >
+                    {copy.cta} <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

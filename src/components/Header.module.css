@@ -17,17 +17,40 @@
 
 .infoInner {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
   align-items: center;
   gap: 12px;
-  padding-block: 6px;
+  padding-block: 2px;
   font-size: 11px;
   line-height: 1.5;
   letter-spacing: 0.04em;
 }
 
-.infoInner p:last-child {
+.infoInner p:nth-child(2) {
   text-align: end;
+}
+
+.languageSwitcher {
+  display: flex;
+  gap: 4px;
+}
+
+.languageSwitcher a {
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  min-height: 24px;
+  text-decoration: none;
+}
+
+.languageSwitcher a[aria-current="page"],
+.languageSwitcher a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.languageSwitcher a:focus-visible {
+  outline: 2px solid currentColor;
 }
 
 .inner {
@@ -111,6 +134,10 @@
   .infoInner,
   .inner {
     padding-inline: 16px;
+  }
+
+  .infoInner {
+    gap: 8px;
   }
 
   .inner {
